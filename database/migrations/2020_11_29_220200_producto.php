@@ -21,6 +21,8 @@ class Producto extends Migration
             $table->integer('cantidad');
             $table->unsignedBigInteger('id_marca');
             $table->foreign('id_marca')->references('id')->on('marcas');
+            $table->unsignedBigInteger('id_categoria');
+            $table->foreign('id_categoria')->references('id')->on('categorias');
             $table->timestamps();
         });
     }
