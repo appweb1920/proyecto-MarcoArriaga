@@ -1,0 +1,75 @@
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #bbeffa;
+ }
+
+ .table-hover{
+     background-color:#d8f0f5;
+ }
+
+ 
+ .table .thead-dark th {
+    background-color: #00B4D8;
+  }
+
+  .btn-edit{
+      background-color: #00B4D8;
+  }
+
+  .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #48CAE4;
+  }
+
+  .page-item.active .page-link {
+    background-color: #00B4D8;
+  }
+
+.modal-footer > .btn, .modal-header{
+  background-color: #00B4D8;
+  color: white;
+}
+
+.table .thead-dark th{
+  border-color:white;
+}
+
+.nav{
+  background-color: #00B4D8;
+}
+
+.nav-item{
+   width:20%;
+   font-weight: bold;
+}
+
+.nav-item > a{
+  color:white;
+  font-size: 1.1rem;
+}
+
+.nav-item:active{
+  border-right: 1px solid #bbeffa;
+  border-left: 1px solid #bbeffa;
+}
+
+.dropdown-menu{
+  width:100%;
+}
+
+.dropdown-item:hover{
+  background-color: #00B4D8;
+  color:white;
+}
+
+.addbtn{
+  margin-top: 20px;
+  border:1px solid #00B4D8;
+  transition: 0.3s;
+}
+
+.addbtn:hover{
+  transform: scale(1.2);
+  background-color: #00B4D8;
+  color:white;
+  font-weight: bold;
+}
+

@@ -7,7 +7,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
-        <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css" >
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+
 
     </head>
     <body>
@@ -126,11 +127,11 @@
         </div>
         
             <div class="text-center">
-                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalAdd">Añadir producto</a>
+                <a href="" class="btn btn-default btn-rounded addbtn" data-toggle="modal" data-target="#modalAdd">Añadir producto</a>
             </div>
         <div class="container-sm ">
             <table id="datatable" class="table table-striped table-bordered table-hover dt-responsive nowrap text-center">
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Producto</th>
@@ -153,7 +154,7 @@
                                     <td>{{$p->cantidad}}</td>
                                     <td style="display:none;">{{$p->id_categoria}}</td>
                                     <td style="display:none;">{{$p->id_marca}}</td>
-                                    <td><a href="" class="btn btn-primary edit"><i class="fas fa-edit"></i></a></td>
+                                    <td><a href="" class="btn btn-edit edit"><i class="fas fa-edit"></i></a></td>
                                     
                                 </tr>
                             @endforeach

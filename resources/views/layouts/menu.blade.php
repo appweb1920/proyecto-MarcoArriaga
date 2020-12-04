@@ -1,8 +1,8 @@
 <ul class="nav justify-content-center">
-    <li class="nav-item">
+    <li class="nav-item text-center">
         <a class="nav-link active" href="\inventario">Todos</a>
     </li>
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown text-center">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Categorias</a>
         <div class="dropdown-menu">
             @if(!is_null($categorias))
@@ -12,7 +12,7 @@
             @endif
         </div>
     </li>
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown text-center">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Marcas</a>
         <div class="dropdown-menu">
             @if(!is_null($marcas))
