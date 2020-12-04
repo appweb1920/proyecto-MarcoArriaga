@@ -125,6 +125,9 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto = productos::find($id);
+        $producto->delete();
+
+        return redirect('/inventario')->with('success', 'Producto eliminado');
     }
 }

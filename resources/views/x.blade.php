@@ -14,14 +14,73 @@
     <body>
         @include('layouts.menu')
             
-        @include('layouts.modalAdd')
-        @include('layouts.modalEdit')
-        @include('layouts.modalDelete')
+        <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Nuevo producto</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <div class="modal-body mx-3">
+                        <form action="{{ action('HomeController@store') }}" method="POST">
+                        @csrf
+                            @include('layouts.modalAdd')
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button type="submit" class="btn btn-default">Añadir</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Editar producto</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="/inventario" id="editForm" method="POST">
+                        {{csrf_field()}}
+                        {{method_field('PUT')}}
+                        @include('layouts.modalEdit')
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Eliminar producto</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="/inventario" id="deleteForm" method="POST">
+                        {{csrf_field()}}
+                        {{method_field('DELETE')}}
+                        <div class="modal-body mx-3">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <p>¿Estás seguro de querer eliminar?</p>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" id="elimina" class="btn btn-default" >Si, eliminar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         
         <div class="text-center">
             <a href="" class="btn btn-default btn-rounded addbtn" data-toggle="modal" data-target="#modalAdd">Añadir producto</a>
-            <a href="" class="btn btn-default btn-rounded addbtn" data-toggle="modal" data-target="#modalAddCat">Añadir categoria</a>
-            <a href="" class="btn btn-default btn-rounded addbtn" data-toggle="modal" data-target="#modalAddMarca">Añadir marca</a>
         </div>
 
         <div class="container-sm ">
@@ -52,7 +111,7 @@
                                     <td><a href="" class="btn btn-edit edit"><i class="fas fa-edit"></i></a></td>
                                     <td style="display:none;">{{$p->id_categoria}}</td>
                                     <td style="display:none;">{{$p->id_marca}}</td>
-                                    <td><a href="" class="btn btn-edit delete"><i class="fas fa-trash-alt"></i></a></td>
+                                    <td><a href="" class="btn btn-edit edit delete"><i class="fas fa-trash-alt"></i></a></td>
                                 </tr>
                             @endforeach
                         @endif
@@ -83,10 +142,9 @@
                 } );
 
                 var table = $('#datatable').DataTable();
-                var tableC = $('#datatable-categorias').DataTable();
-                var tableM = $('#datatable-marcas').DataTable();
+                var table = $('#datatable-categorias').DataTable();
+                var table = $('#datatable-marcas').DataTable();
 
-                //Productos
                 table.on('click', '.edit', function(){
                     event.preventDefault()
                     $tr = $(this).closest('tr');
@@ -109,82 +167,17 @@
                 })
 
                 table.on('click', '.delete', function(){
-                    event.preventDefault()
+                    //event.preventDefault()
                     $tr = $(this).closest('tr');
                     if($($tr).hasClass('Child')){
                         $tr = $tr.prev('.parent');
                     }
+
                     var data = table.row($tr).data();
                     console.log(data);
 
-                    $('#nombrePE').val(data[1]);
-
                     $('#deleteForm').attr('action', '/inventario/' + data[0]);
                     $('#modalDelete').modal('show');
-                })
-
-                //Categorias
-                tableC.on('click', '.editCat', function(){
-                    event.preventDefault()
-                    $tr = $(this).closest('tr');
-                    if($($tr).hasClass('Child')){
-                        $tr = $tr.prev('.parent');
-                    }
-
-                    var data = tableC.row($tr).data();
-                    console.log(data);
-
-                    $('#nombreCat').val(data[1]);
-
-                    $('#editFormCat').attr('action', '/categoria/' + data[0]);
-                    $('#modalEditCat').modal('show');
-                })
-
-                tableC.on('click', '.deleteCat', function(){
-                    event.preventDefault()
-                    $tr = $(this).closest('tr');
-                    if($($tr).hasClass('Child')){
-                        $tr = $tr.prev('.parent');
-                    }
-                    var data = tableC.row($tr).data();
-                    console.log(data);
-
-                    $('#nombreCE').val(data[1]);
-
-                    $('#deleteFormCat').attr('action', '/categoria/' + data[0]);
-                    $('#modalDeleteCat').modal('show');
-                })
-
-                //Marcas
-                tableM.on('click', '.editMarca', function(){
-                    event.preventDefault()
-                    $tr = $(this).closest('tr');
-                    if($($tr).hasClass('Child')){
-                        $tr = $tr.prev('.parent');
-                    }
-
-                    var data = tableM.row($tr).data();
-                    console.log(data);
-
-                    $('#nombreMarca').val(data[1]);
-
-                    $('#editFormMarca').attr('action', '/marca/' + data[0]);
-                    $('#modalEditMarca').modal('show');
-                })
-
-                tableM.on('click', '.deleteMarca', function(){
-                    event.preventDefault()
-                    $tr = $(this).closest('tr');
-                    if($($tr).hasClass('Child')){
-                        $tr = $tr.prev('.parent');
-                    }
-                    var data = tableM.row($tr).data();
-                    console.log(data);
-
-                    $('#nombreME').val(data[1]);
-
-                    $('#deleteFormMarca').attr('action', '/marca/' + data[0]);
-                    $('#modalDeleteMarca').modal('show');
                 })
             });
         </script>
