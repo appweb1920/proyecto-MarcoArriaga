@@ -15,9 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () { return view('welcome');});
 
-Route::resource('inventario', 'HomeController');
-Route::get('/categorias/{id}', 'HomeController@categoriaSel');
-Route::get('/marcas/{id}', 'HomeController@marcaSel');
+Route::resource('inventario', 'InventarioController');
+Route::get('/categorias/{id}', 'InventarioController@categoriaSel');
+Route::get('/marcas/{id}', 'InventarioController@marcaSel');
 
 Route::resource('categoria', 'CategoriaController');
 Route::resource('marca', 'MarcaController');
+Auth::routes();
+
+Route::get('/Inicio','InventarioController@index');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
