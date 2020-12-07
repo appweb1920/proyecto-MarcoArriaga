@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Gate;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
-     * The policy mappings for the application.
+     * The policy mappings for the application. 
      *
      * @var array
      */
@@ -25,6 +25,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('isAdmin', function ($user) {
+            return $user->tipo == 1;
+        });
+
+        Gate::define('isOther', function ($user, $post) {
+            return $user->tipo == 2;
+        });
     }
 }

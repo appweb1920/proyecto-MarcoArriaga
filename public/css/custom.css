@@ -46,6 +46,10 @@
   font-size: 1.1rem;
 }
 
+.nav-item:hover{
+  background-color: #00748bc4;
+}
+
 .nav-item:active{
   border-right: 1px solid #bbeffa;
   border-left: 1px solid #bbeffa;

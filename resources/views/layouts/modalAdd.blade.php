@@ -10,7 +10,7 @@
             </div>
             
             <div class="modal-body mx-3">
-                <form action="{{ action('HomeController@store') }}" method="POST">
+                <form action="{{ action('InventarioController@store') }}" method="POST">
                 @csrf
                 <div class="md-form mb-3">
                     <input type="texto" name="nombre" class="form-control validate" placeholder="Nombre...">

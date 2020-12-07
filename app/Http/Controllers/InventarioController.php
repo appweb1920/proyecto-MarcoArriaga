@@ -8,7 +8,7 @@ use App\categoria;
 use DB;
 use Illuminate\Http\Request;
 use Redirect,Response;
-class HomeController extends Controller
+class InventarioController extends Controller
 {
     /**
      * Display a listing of the resource.

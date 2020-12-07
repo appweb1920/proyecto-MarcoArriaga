@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{$nombre}}</title>
+        <title>{{ $nombre ?? '' }}</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
@@ -17,11 +17,19 @@
         @include('layouts.modalAdd')
         @include('layouts.modalEdit')
         @include('layouts.modalDelete')
+
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div> 
+        @endif
         
         <div class="text-center">
             <a href="" class="btn btn-default btn-rounded addbtn" data-toggle="modal" data-target="#modalAdd">Añadir producto</a>
-            <a href="" class="btn btn-default btn-rounded addbtn" data-toggle="modal" data-target="#modalAddCat">Añadir categoria</a>
-            <a href="" class="btn btn-default btn-rounded addbtn" data-toggle="modal" data-target="#modalAddMarca">Añadir marca</a>
+            @can('isAdmin')
+                <a href="" class="btn btn-default btn-rounded addbtn" data-toggle="modal" data-target="#modalAddCat">Añadir categoria</a>
+                <a href="" class="btn btn-default btn-rounded addbtn" data-toggle="modal" data-target="#modalAddMarca">Añadir marca</a>
+            @endcan
         </div>
 
         <div class="container-sm ">
@@ -59,8 +67,9 @@
                 </tbody>
             </table>
         </div>
-
-        @include('layouts.tablas-admin')
+        @can('isAdmin')
+            @include('layouts.tablas-admin')
+        @endcan
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
