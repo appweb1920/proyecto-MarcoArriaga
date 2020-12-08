@@ -47,7 +47,7 @@
 }
 
 .nav-item:hover{
-  background-color: #00748bc4;
+  background-color: #00a6c4;
 }
 
 .nav-item:active{
@@ -79,10 +79,24 @@
 }
 
 .sep-sect{
-  margin-bottom: 10px;
-  padding:30px;
-  width:100%;
+  margin:10px;
+  margin-top: 30px;
+  padding:10px;
+  width:auto;
   display:block;
+  background-color: #00B4D8;
+  color:white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor:pointer;
+}
+
+.sep-sect:hover{
+  background-color: #00a6c4;
+}
+
+.tsm, .tsc{
+  display:none;
 }
 
 .prodElim{

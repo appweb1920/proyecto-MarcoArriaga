@@ -31,8 +31,10 @@
                 <a href="" class="btn btn-default btn-rounded addbtn" data-toggle="modal" data-target="#modalAddMarca">Añadir marca</a>
             @endcan
         </div>
-
-        <div class="container-sm ">
+        @can('isAdmin')
+            <div class="sep-sect" id="productosHS"><i class="fas fa-chevron-up"></i> Productos</div>
+        @endcan
+        <div class="container-sm tsp">
 
             <table id="datatable" class="table table-striped table-bordered table-hover dt-responsive nowrap text-center">
                 <thead class="thead-dark">
@@ -76,127 +78,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-
-        <script type="text/javascript">
-        
-            $(document).ready(function () {
-                
-                $('#datatable').DataTable( {
-                    "language": {"url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Spanish.json"}
-                } );
-                $('#datatable-categorias').DataTable( {
-                    "language": {"url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Spanish.json"}
-                } );
-                $('#datatable-marcas').DataTable( {
-                    "language": {"url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Spanish.json"}
-                } );
-
-                var table = $('#datatable').DataTable();
-                var tableC = $('#datatable-categorias').DataTable();
-                var tableM = $('#datatable-marcas').DataTable();
-
-                //Productos
-                table.on('click', '.edit', function(){
-                    event.preventDefault()
-                    $tr = $(this).closest('tr');
-                    if($($tr).hasClass('Child')){
-                        $tr = $tr.prev('.parent');
-                    }
-
-                    var data = table.row($tr).data();
-                    console.log(data);
-
-                    $('#nombre').val(data[1]);
-                    $('#precio').val(data[2]);
-                    $('#costo').val(data[3]);
-                    $('#cantidad').val(data[4]);
-                    $('#id_categoria').val(data[5]);
-                    $('#id_marca').val(data[6]);
-
-                    $('#editForm').attr('action', '/inventario/' + data[0]);
-                    $('#modalEdit').modal('show');
-                })
-
-                table.on('click', '.delete', function(){
-                    event.preventDefault()
-                    $tr = $(this).closest('tr');
-                    if($($tr).hasClass('Child')){
-                        $tr = $tr.prev('.parent');
-                    }
-                    var data = table.row($tr).data();
-                    console.log(data);
-
-                    $('#nombrePE').val(data[1]);
-
-                    $('#deleteForm').attr('action', '/inventario/' + data[0]);
-                    $('#modalDelete').modal('show');
-                })
-
-                //Categorias
-                tableC.on('click', '.editCat', function(){
-                    event.preventDefault()
-                    $tr = $(this).closest('tr');
-                    if($($tr).hasClass('Child')){
-                        $tr = $tr.prev('.parent');
-                    }
-
-                    var data = tableC.row($tr).data();
-                    console.log(data);
-
-                    $('#nombreCat').val(data[1]);
-
-                    $('#editFormCat').attr('action', '/categoria/' + data[0]);
-                    $('#modalEditCat').modal('show');
-                })
-
-                tableC.on('click', '.deleteCat', function(){
-                    event.preventDefault()
-                    $tr = $(this).closest('tr');
-                    if($($tr).hasClass('Child')){
-                        $tr = $tr.prev('.parent');
-                    }
-                    var data = tableC.row($tr).data();
-                    console.log(data);
-
-                    $('#nombreCE').val(data[1]);
-
-                    $('#deleteFormCat').attr('action', '/categoria/' + data[0]);
-                    $('#modalDeleteCat').modal('show');
-                })
-
-                //Marcas
-                tableM.on('click', '.editMarca', function(){
-                    event.preventDefault()
-                    $tr = $(this).closest('tr');
-                    if($($tr).hasClass('Child')){
-                        $tr = $tr.prev('.parent');
-                    }
-
-                    var data = tableM.row($tr).data();
-                    console.log(data);
-
-                    $('#nombreMarca').val(data[1]);
-
-                    $('#editFormMarca').attr('action', '/marca/' + data[0]);
-                    $('#modalEditMarca').modal('show');
-                })
-
-                tableM.on('click', '.deleteMarca', function(){
-                    event.preventDefault()
-                    $tr = $(this).closest('tr');
-                    if($($tr).hasClass('Child')){
-                        $tr = $tr.prev('.parent');
-                    }
-                    var data = tableM.row($tr).data();
-                    console.log(data);
-
-                    $('#nombreME').val(data[1]);
-
-                    $('#deleteFormMarca').attr('action', '/marca/' + data[0]);
-                    $('#modalDeleteMarca').modal('show');
-                })
-            });
-        </script>
-
+        <script type="text/javascript" src="{{ URL::asset('js/tablas.js') }}"></script>
     </body>
 </html>
