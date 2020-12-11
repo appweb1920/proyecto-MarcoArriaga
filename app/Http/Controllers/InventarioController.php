@@ -41,7 +41,7 @@ class InventarioController extends Controller
         $categorias = categoria::all();
         $marcas = marca::all();
         $productos = DB::table('productos')->where('id_marca', $id)->get();
-        return redirect('/inventario')->with('productos', $productos)->with('nombre', $marca)
+        return view('inventario')->with('productos', $productos)->with('nombre', $marca)
                                 ->with('categorias', $categorias)->with('marcas', $marcas);
     }
 

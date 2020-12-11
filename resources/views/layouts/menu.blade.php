@@ -1,4 +1,7 @@
 <ul class="nav justify-content-center">
+    <!--Logo <li class="nav-item text-center">
+        <img src="{{URL::asset('/image/logo.png')}}" alt="Logo" width="100" height="70" style="position:absolute;">
+    </li>-->
     <li class="nav-item text-center">
         <a class="nav-link active" href="\inventario">Todos</a>
     </li>
@@ -9,7 +12,7 @@
                 @foreach($categorias as $c)
                     <a class="dropdown-item" href="\categorias\{{$c->id}}">{{$c->nombre}}</a>
                 @endforeach
-            @endif
+            @endif 
         </div>
     </li>
     <li class="nav-item dropdown text-center">
