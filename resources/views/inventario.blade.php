@@ -72,6 +72,10 @@
         @can('isAdmin')
             @include('layouts.tablas-admin')
         @endcan
+
+        <footer class="text-center">
+            <img class="logo" src="{{URL::asset('/image/logo.png')}}" alt="Logo">
+        </footer>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

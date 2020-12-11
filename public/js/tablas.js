@@ -29,8 +29,8 @@ $(document).ready(function () {
         $('#precio').val(data[2]);
         $('#costo').val(data[3]);
         $('#cantidad').val(data[4]);
-        $('#id_categoria').val(data[5]);
-        $('#id_marca').val(data[6]);
+        $('#id_categoria').val(data[6]); 
+        $('#id_marca').val(data[7]);
 
         $('#editForm').attr('action', '/inventario/' + data[0]);
         $('#modalEdit').modal('show');

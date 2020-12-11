@@ -59,6 +59,16 @@
   width:100%;
 }
 
+.dropdown-menu{
+  max-height:200px;
+  overflow:hidden; 
+  overflow-y:scroll;
+}
+
+.lista{
+  max-height: 150px;
+}
+
 .dropdown-item:hover{
   background-color: #00B4D8;
   color:white;
@@ -104,4 +114,34 @@
   margin:0px auto;
   outline: none;
   font-size: 1.2rem;
+}
+
+::-webkit-scrollbar {
+  width: 12px;            
+}
+
+::-webkit-scrollbar-track {
+  background: #bbeffa;    
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00B4D8;
+  border-radius: 20px;     
+  border: 3px solid #bbeffa;
+}
+
+footer{
+  margin-top:20px;
+  background-color: #00a6c4;
+}
+
+.logo{
+  padding:30px;
+  width:auto;
+  height:auto;
+  transition: 0.3s;
+}
+
+.logo:hover{
+  transform: skewY(-5deg) scale(1.1);
 }
