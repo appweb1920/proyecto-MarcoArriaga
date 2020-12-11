@@ -68,6 +68,7 @@ $(document).ready(function () {
         $('#modalEditCat').modal('show');
     })
 
+    /*No se utiliza por lo pronto
     tableC.on('click', '.deleteCat', function(){
         event.preventDefault()
         $tr = $(this).closest('tr');
@@ -81,7 +82,7 @@ $(document).ready(function () {
 
         $('#deleteFormCat').attr('action', '/categoria/' + data[0]);
         $('#modalDeleteCat').modal('show');
-    })
+    })*/
 
     //Marcas
     tableM.on('click', '.editMarca', function(){
@@ -100,6 +101,7 @@ $(document).ready(function () {
         $('#modalEditMarca').modal('show');
     })
 
+    /*No se utiliza por lo pronto
     tableM.on('click', '.deleteMarca', function(){
         event.preventDefault()
         $tr = $(this).closest('tr');
@@ -113,7 +115,7 @@ $(document).ready(function () {
 
         $('#deleteFormMarca').attr('action', '/marca/' + data[0]);
         $('#modalDeleteMarca').modal('show');
-    })
+    })*/
 
     //Oculta y muestra tablas
     $("#productosHS").click(function(){

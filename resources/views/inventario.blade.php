@@ -8,8 +8,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-
-
+        <link rel="icon" href="{{URL::asset('/image/logo.ico')}}" type="image/icon type">
     </head>
     <body>
         @include('layouts.menu')

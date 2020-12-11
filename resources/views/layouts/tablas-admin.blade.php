@@ -18,7 +18,7 @@
                             <td>{{$c->nombre}}</td>   
                             <td><a href="" class="btn btn-edit editCat"><i class="fas fa-edit"></i></a></td>
                             <!--<td><a href="" class="btn btn-edit deleteCat"><i class="fas fa-trash-alt"></i></a></td>-->
-                        </tr>
+                        </tr> 
                     @endforeach
                 @endif
         </tbody>

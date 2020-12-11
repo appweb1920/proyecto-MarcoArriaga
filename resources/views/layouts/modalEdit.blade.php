@@ -129,13 +129,13 @@
                 {{csrf_field()}}
                 {{method_field('PUT')}}
                 <div class="modal-body mx-3">
-                    <input type="hidden"  value="" name="id" id="id-cat">
+                    <input type="hidden"  value="" name="id" id="id-marca">
                     <div class="md-form mb-3">
                         <input type="texto" name="nombre" id="nombreMarca" class="form-control validate" placeholder="Nombre...">
                     </div>
 
                     <div class="modal-footer d-flex justify-content-center">
-                        <button type="submit" id="actualizaCat" class="btn btn-default" >Actualizar</button>
+                        <button type="submit" id="actualizaMarca" class="btn btn-default" >Actualizar</button>
                     </div>
                 </div>
             </form>

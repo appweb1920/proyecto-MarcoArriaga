@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        //Se crea un usuario administrador (con el campo Tipo igual a 1)
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'ejemplo@ext.com',
+            'password' => Hash::make('12345678'), 
+            'tipo' => '1',
+        ]);
     }
 }

@@ -43,7 +43,7 @@
                     <p>¿Estás seguro de querer eliminar esta categoria?</p>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="submit" id="elimina" class="btn btn-default" >Si, eliminar</button>
+                    <button type="submit" id="eliminaCat" class="btn btn-default" >Si, eliminar</button>
                 </div>
             </form>
         </div>
@@ -69,7 +69,7 @@
                     <p>¿Estás seguro de querer eliminar esta marca?</p>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="submit" id="elimina" class="btn btn-default" >Si, eliminar</button>
+                    <button type="submit" id="eliminaMarca" class="btn btn-default" >Si, eliminar</button>
                 </div>
             </form>
         </div>
